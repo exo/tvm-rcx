@@ -11,7 +11,10 @@ LIBS = -ltvm @LIBGCC@ @LIBS@
 noinst_PROGRAMS = tvm_rcx
 
 tvm_rcx_SOURCES = \
-	tvm.c
+	librcx.c \
+	systime.c \
+	tvm.c \
+	tvm-rcx.c
 
 %.coff: $(tvm_rcx_OBJECTS)
 	$(LD) $(LDFLAGS) \
