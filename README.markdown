@@ -1,7 +1,5 @@
 # RCX wrapper for the Transterpreter
 
-Jon Simpson <me@jonsimpson.co.uk>
-
 This is a revised port of the RCX to the newer (2008-) wrapper architecture and source tree of the Transterpreter (http://www.transterpreter.org/). Portions of code have been re-used from BrickOS, as with the original port.
 
 ## Pre-requisites
