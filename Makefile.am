@@ -36,8 +36,8 @@ libtvm/libtvm.a: config.status
 	rm -fr libtvm
 	mkdir libtvm
 	cd libtvm && ../../../runtime/libtvm/configure \
-		--host=h8300-hitachi-coff \
-		--with-memory-allocator=tlsf \
+		--host=h8300-hms \
+		--with-memory-allocator=none \
 		--enable-custom-memory-ops \
 		CFLAGS="@CFLAGS@" \
 		LDFLAGS="@LDFLAGS@"
@@ -45,7 +45,8 @@ libtvm/libtvm.a: config.status
 
 CLEANFILES = \
 	tvm_rcx \
-	tvm-rcx.coff tvm-rcx.srec
+	tvm-rcx.coff \
+	tvm-rcx.srec
 
 distclean-local:
 	rm -Rf libtvm

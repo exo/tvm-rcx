@@ -1,16 +1,27 @@
 #include "tvm-rcx.h"
+#include <tvm.h>
+#include <tvm_tbc.h>
 
-char dispatch[6];
-async_t async;
+static tvm_t tvm;
+static tvm_ectx_t context;
 
 void main ()
 {
-    /* Platform initialisation */
-    rcx_init();
+    UWORD  tbc_length   = 0;
+    BYTE  *tbc_data     = NULL;
+    tbc_t *tbc          = NULL;
 
-    rcx_out_int(42);
+    rcx_init ();
 
     while (1) {
+        /* Assume bytecode */
+        tvm_ectx_init(&tvm, &context);
+        rcx_out_int(42);
+        // TODO: Mem pool
+        /*context.get_time = rcx_get_time;
+        // TODO: Sync flags
+        context.sffi_table = sffi_table;
+        context.sffi_table_length = sffi_table_length;*/
     }
 }
 

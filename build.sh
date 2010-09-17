@@ -12,6 +12,6 @@ unset ACLOCAL
 autoreconf -vfi
 
 ./configure \
-    --host=h8300-hitachi-coff \
+    --host=h8300-hms \
     "$@"
 make

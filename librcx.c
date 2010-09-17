@@ -103,6 +103,49 @@ __asm__ (
     "rts\n\t"
 );
 
+__asm__ (
+    ".section .text\n\t"
+    ".global ___mulhi3\n\t"
+"___mulhi3:\n\t"
+    "mov.b   r1h,r2l\n\t"
+    "mov.b   r0h,r1h\n\t"
+    "mulxu.b r0l,r2\n\t"
+    "mulxu.b r1l,r0\n\t"
+    "mulxu.b r1h,r1\n\t"
+    "add.b   r1l,r0h\n\t"
+    "add.b   r2l,r0h\n\t"
+    "rts\n\t"
+);
+
+__asm__ (
+    ".section .text\n\t"
+    ".global ___divhi3\n\t"
+"___divhi3:\n\t"
+    "push    r5\n\t"
+    "push    r6\n\t"
+    "mov.w   r0,r6\n\t"
+    "mov.w   r1,r5\n\t"
+    "jsr     @@82\n\t"
+    "mov.w   r6,r0\n\t"
+    "pop     r6\n\t"
+    "pop     r5\n\t"
+    "rts\n\t"
+);
+
+__asm__ (
+    ".section .text\n\t"
+    ".global ___modhi3\n\t"
+"___modhi3:\n\t"
+    "push    r5\n\t"
+    "push    r6\n\t"
+    "mov.w   r0,r6\n\t"
+    "mov.w   r1,r5\n\t"
+    "jsr     @@80\n\t"
+    "mov.w   r6,r0\n\t"
+    "pop     r6\n\t"
+    "pop     r5\n\t"
+    "rts\n\t"
+);
 
 __asm__ (
     ".section .init\n\t"
