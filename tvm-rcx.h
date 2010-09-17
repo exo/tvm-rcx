@@ -11,7 +11,8 @@
 extern char dispatch[6];
 extern async_t async;
 
-void rcx_init (int w[]);
+void rcx_init (void);
+void rcx_out_int (short n);
 
 int rcx_get_time (void);
 

@@ -64,4 +64,47 @@ static inline void init_buttons (void) {
     __rcall0 (0x1aba);
 }
 
+static inline void refresh_display (void) {
+    __rcall0 (0x27c8);
+}
+
+/*
+ * Set lcd number (short code, short value, short pointcode)
+ *
+ * code=3001: Set lcd main number signed
+ *   Set main number on display to signed value, with no leading zeros
+ *   If value > 9999, displayed value is 9999
+ *   If value < -9999, displayed value is -9999
+ * code=3017: Set lcd program number
+ *   Set program number on display to value, use pointcode=0
+ *   If value < 0, no value is displayed
+ *   If value > 0, no value is displayed
+ *   Pointcode is ignored, no real need to set to zero
+ * code=301f: Set lcd main number unsigned
+ *   Set main number on display to unsigned value, with leading zeros
+ *   Value is unsigned, so it is never less than 0
+ * For 3001, 301f:
+ *   pointcode=3002: no decimal point
+ *   pointcode=3003: 000.0 format
+ *   pointcode=3004: 00.00 format
+ *   pointcode=3005: 0.000 format
+ */
+
+/* code */
+#define LCD_SIGNED           0x3001
+#define LCD_PROGRAM          0x3017
+#define LCD_UNSIGNED         0x301f
+
+/* pointcode */
+#define LCD_DECIMAL_0        0x3002
+#define LCD_DECIMAL_1        0x3003
+#define LCD_DECIMAL_2        0x3004
+#define LCD_DECIMAL_3        0x3005
+
+static inline void
+set_lcd_number (short code, short value, short pointcode)
+{
+    __rcall3 (0x1ff2, code, value, pointcode);
+}
+
 #endif

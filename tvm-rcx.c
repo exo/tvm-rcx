@@ -6,13 +6,14 @@ char dispatch[6];
 async_t async;
 
 /* Initialisation */
-void rcx_init (int *w) {
+void rcx_init (void) {
     init_timer(&async, &dispatch[0]);
     init_power();
     systime_init();
-    /* init_serial(&dispatch[4], &async, 1, 1); */
-    init_serial(0, 0, 1, 1);
     init_sensors();
+    //init_motors
+    init_buttons(); // Buttons & display pins
+    init_serial(0, 0, 1, 1);
 }
 
 /* Timer call */
@@ -21,6 +22,12 @@ int rcx_get_time (void)
     /* Time from a 32 bit value updated by the millisecond handler */
     unsigned int time_16 = ((unsigned int*) &sys_time)[1];
     return time_16;
+}
+
+void rcx_out_int (short n)
+{
+    set_lcd_number(LCD_UNSIGNED, n, LCD_DECIMAL_0);
+    refresh_display();
 }
 
 /* FFI functions to call generic ROM routine wrappers */
