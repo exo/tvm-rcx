@@ -8,8 +8,15 @@
 #include <tvm.h>
 #include <tvm_tbc.h>
 
+/* tvm.c */
 extern char dispatch[6];
 extern async_t async;
+
+/* ffi.c */
+extern SFFI_FUNCTION sffi_table[];
+extern const int sffi_table_length;
+
+/* tvm-rcx.c */
 
 void rcx_init (void);
 void rcx_out_int (short n);

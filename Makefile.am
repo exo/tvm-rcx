@@ -13,6 +13,7 @@ noinst_PROGRAMS = tvm_rcx
 tvm_rcx_SOURCES = \
 	librcx.c \
 	systime.c \
+	ffi.c \
 	tvm.c \
 	tvm-rcx.c
 
