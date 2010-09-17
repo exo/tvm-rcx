@@ -60,4 +60,8 @@ static inline void init_timer (void *ptr0, void *ptr1) {
     __rcall2 (0x3b9a, (short)ptr0, (short)ptr1);
 }
 
+static inline void init_buttons (void) {
+    __rcall0 (0x1aba);
+}
+
 #endif

@@ -18,7 +18,7 @@ tvm_rcx_SOURCES = \
 
 %.coff: $(tvm_rcx_OBJECTS)
 	$(LD) $(LDFLAGS) \
-		-o $@ -T h8300.rcx \
+		-o $@ -T rcx.lds \
 		$(tvm_rcx_OBJECTS) \
 		$(LIBS)
 
